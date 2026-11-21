@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Road Guard AI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 2 4.5 5v6c0 5.1 3.2 9 7.5 11 4.3-2 7.5-5.9 7.5-11V5L12 2Z"/><path d="M12 7v9M8.5 10.5l7-3M8.5 15l7-3"/></svg>
+      </div>
+      <div>
+        <strong>ROADGUARD</strong>
+        <span>AI</span>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Primary navigation">
+      <button class="nav-item active" data-section="Overview">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>
+        <span>Overview</span>
+      </button>
+      <button class="nav-item" data-section="Risk Analysis">
+        <svg viewBox="0 0 24 24"><path d="M3 20h18M5 16l4-5 3 2 5-7 2 10"/></svg>
+        <span>Risk Analysis</span>
+      </button>
+      <button class="nav-item" data-section="Live Monitor">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M21 12h-3M12 21v-3M3 12h3"/></svg>
+        <span>Live Monitor</span>
+      </button>
+      <button class="nav-item" data-section="Incident Reports">
+        <svg viewBox="0 0 24 24"><path d="M6 3h12v18H6zM9 7h6M9 11h6M9 15h4"/></svg>
+        <span>Incident Reports</span>
+      </button>
+      <button class="nav-item" data-section="Vehicles">
+        <svg viewBox="0 0 24 24"><path d="M5 17h14l-1.5-6.5A2 2 0 0 0 15.6 9H8.4a2 2 0 0 0-1.9 1.5L5 17Z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M8 9l1-3h6l1 3"/></svg>
+        <span>Vehicles</span>
+      </button>
+      <button class="nav-item" data-section="Road Network">
+        <svg viewBox="0 0 24 24"><path d="M4 20V4M20 20V4M4 20c4-5 12-11 16-16M4 4c4 5 12 11 16 16"/></svg>
+        <span>Road Network</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="nav-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.8 1.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2H12V20a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L7.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 6 14H5.8v-2H6a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L7.2 9 9 7.2l.1.1A1.7 1.7 0 0 0 11 7.6 1.7 1.7 0 0 0 12 6V5.8h2V6a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L18.8 9l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v2H20a1.7 1.7 0 0 0-.6 1Z"/></svg>
+        <span>Settings</span>
+      </button>
+      <div class="profile">
+        <div class="avatar">JA</div>
+        <div class="profile-copy"><strong>John Anderson</strong><span>City Transport Admin</span></div>
+        <button class="icon-button dots" aria-label="Profile menu">•••</button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">ROAD SAFETY COMMAND CENTER</p>
+        <h1 id="page-title">System Overview</h1>
+      </div>
+      <div class="top-actions">
+        <button class="icon-button notification" aria-label="Notifications">
+          <svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></svg>
+          <span class="notification-dot"></span>
+        </button>
+        <button class="primary-button" id="analysis-button">
+          <svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20V7"/></svg>
+          Run Analysis
+        </button>
+      </div>
+    </header>
+
+    <section class="status-row">
+      <div class="status-pill"><span class="live-dot"></span><strong>System Active</strong></div>
+      <div class="status-item"><span>Last updated</span><strong id="updated-time">Just now</strong></div>
+      <div class="status-item"><span>Coverage Area</span><strong>Metro District</strong></div>
+    </section>
+
+    <section class="metrics-grid">
+      <article class="metric-card">
+        <div class="metric-icon blue">
+          <svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20V7"/></svg>
+        </div>
+        <div class="metric-copy"><span>Network Risk Score</span><div><strong>64</strong><small>/100</small></div></div>
+        <span class="trend down">↓ 8.2%</span>
+      </article>
+      <article class="metric-card">
+        <div class="metric-icon red">
+          <svg viewBox="0 0 24 24"><path d="M12 3 22 20H2L12 3Z"/><path d="M12 9v5M12 17v.2"/></svg>
+        </div>
+        <div class="metric-copy"><span>Active High-Risk Zones</span><div><strong>12</strong></div></div>
+        <span class="trend up">↑ 3 new</span>
+      </article>
+      <article class="metric-card">
+        <div class="metric-icon amber">
+          <svg viewBox="0 0 24 24"><path d="M5 17h14l-1.5-6.5A2 2 0 0 0 15.6 9H8.4a2 2 0 0 0-1.9 1.5L5 17Z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+        </div>
+        <div class="metric-copy"><span>Vehicles Monitored</span><div><strong>2,847</strong></div></div>
+        <span class="trend neutral">Live</span>
+      </article>
+      <article class="metric-card">
+        <div class="metric-icon green">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+        </div>
+        <div class="metric-copy"><span>Prevention Actions</span><div><strong>38</strong></div></div>
+        <span class="trend down">↑ 12%</span>
+      </article>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="panel risk-panel">
+        <div class="panel-header">
+          <div><h2>Risk Map</h2><p>Real-time geographic risk distribution</p></div>
+          <div class="map-controls">
+            <button class="filter-button" id="risk-filter">All Severity <span>⌄</span></button>
+            <button class="icon-button panel-menu" aria-label="Map options">•••</button>
+          </div>
+        </div>
+        <div class="map" id="risk-map">
+          <svg class="map-svg" viewBox="0 0 760 390" preserveAspectRatio="none" aria-label="Road risk map">
+            <g class="map-roads">
+              <path d="M-20 305C130 248 190 310 330 220S530 155 780 245"/>
+              <path d="M80-20c60 95 40 145 118 205s76 130 73 220"/>
+              <path d="M280-20c45 60 20 130 75 190s130 95 155 240"/>
+              <path d="M520-20c-15 72 22 125-10 198s-84 125-74 232"/>
+              <path d="M650-20c-40 85-10 160-70 235s-40 126-20 195"/>
+              <path d="M-20 95c105 15 185 55 300 38s200-80 500-48"/>
+              <path d="M-20 180c125-30 220 25 340 5s250-82 460-15"/>
+            </g>
+            <g class="minor-roads">
+              <path d="M0 350 760 40M20 20l720 350M160-10l30 420M390-10l-20 420M690-10l-60 420"/>
+              <path d="M0 240 760 130M0 130 760 300M100 390l180-400M580 390l-170-400"/>
+            </g>
+            <g class="map-water"><path d="M620-10c-30 90 40 120 20 210s-32 130 25 200"/></g>
+            <g class="risk-zones">
+              <circle class="zone zone-critical" cx="225" cy="120" r="38"/>
+              <circle class="zone zone-critical core" cx="225" cy="120" r="18"/>
+              <circle class="zone zone-high" cx="490" cy="155" r="32"/>
+              <circle class="zone zone-high core" cx="490" cy="155" r="14"/>
+              <circle class="zone zone-medium" cx="590" cy="285" r="27"/>
+              <circle class="zone zone-medium core" cx="590" cy="285" r="11"/>
+              <circle class="zone zone-low" cx="140" cy="285" r="21"/>
+              <circle class="zone zone-low core" cx="140" cy="285" r="8"/>
+            </g>
+          </svg>
+          <div class="map-pin pin-1"><span>82</span><small>Junction 14</small></div>
+          <div class="map-pin pin-2"><span>71</span><small>Westbridge</small></div>
+          <div class="map-zoom"><button id="zoom-in">+</button><button id="zoom-out">−</button></div>
+          <div class="map-legend">
+            <span><i class="critical"></i>Critical</span><span><i class="high"></i>High</span><span><i class="medium"></i>Medium</span><span><i class="low"></i>Low</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel alerts-panel">
+        <div class="panel-header">
+          <div><h2>Active Alerts</h2><p>Requires attention</p></div>
+          <button class="text-button" id="view-all">View all <span>→</span></button>
+        </div>
+        <div class="alerts-list">
+          <button class="alert-item" data-risk="Critical">
+            <div class="alert-level critical"></div>
+            <div class="alert-copy"><strong>High collision probability</strong><span>Junction 14 · Central Ave</span></div>
+            <div class="alert-meta"><strong>92%</strong><span>2 min ago</span></div>
+          </button>
+          <button class="alert-item" data-risk="High">
+            <div class="alert-level high"></div>
+            <div class="alert-copy"><strong>Weather-related hazard</strong><span>Westbridge Road · Mile 8</span></div>
+            <div class="alert-meta"><strong>78%</strong><span>8 min ago</span></div>
+          </button>
+          <button class="alert-item" data-risk="High">
+            <div class="alert-level high"></div>
+            <div class="alert-copy"><strong>Traffic congestion spike</strong><span>I-95 Northbound · Exit 42</span></div>
+            <div class="alert-meta"><strong>71%</strong><span>12 min ago</span></div>
+          </button>
+          <button class="alert-item" data-risk="Medium">
+            <div class="alert-level medium"></div>
+            <div class="alert-copy"><strong>Road surface anomaly</strong><span>Oak Street · Block 1200</span></div>
+            <div class="alert-meta"><strong>58%</strong><span>19 min ago</span></div>
+          </button>
+        </div>
+      </article>
+
+      <article class="panel trend-panel">
+        <div class="panel-header">
+          <div><h2>Risk Trend</h2><p>Network-wide risk index</p></div>
+          <button class="filter-button" id="period-button">Last 7 days <span>⌄</span></button>
+        </div>
+        <div class="chart">
+          <div class="chart-y"><span>100</span><span>80</span><span>60</span><span>40</span><span>20</span><span>0</span></div>
+          <div class="chart-area">
+            <div class="grid-lines"><i></i><i></i><i></i><i></i><i></i></div>
+            <svg viewBox="0 0 760 230" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2f80ed" stop-opacity=".22"/><stop offset="100%" stop-color="#2f80ed" stop-opacity="0"/></linearGradient>
+              </defs>
+              <path class="area" d="M0 185 C70 175 85 150 135 158 S205 180 270 145 S350 112 410 125 S490 155 545 105 S625 70 680 85 S735 120 760 64 L760 230 L0 230Z"/>
+              <path class="line" d="M0 185 C70 175 85 150 135 158 S205 180 270 145 S350 112 410 125 S490 155 545 105 S625 70 680 85 S735 120 760 64"/>
+              <g class="chart-dots"><circle cx="0" cy="185" r="4"/><circle cx="135" cy="158" r="4"/><circle cx="270" cy="145" r="4"/><circle cx="410" cy="125" r="4"/><circle cx="545" cy="105" r="4"/><circle cx="680" cy="85" r="4"/><circle cx="760" cy="64" r="5"/></g>
+            </svg>
+            <div class="chart-x"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel insight-panel">
+        <div class="panel-header">
+          <div><h2>AI Recommendations</h2><p>Priority actions</p></div>
+          <span class="ai-badge">AI</span>
+        </div>
+        <div class="recommendations">
+          <div class="recommendation">
+            <span class="priority critical">1</span>
+            <div><strong>Deploy traffic control</strong><p>Junction 14 · Estimated 34% risk reduction</p></div>
+            <button aria-label="Open recommendation">›</button>
+          </div>
+          <div class="recommendation">
+            <span class="priority high">2</span>
+            <div><strong>Issue weather advisory</strong><p>Westbridge corridor · Next 2 hours</p></div>
+            <button aria-label="Open recommendation">›</button>
+          </div>
+          <div class="recommendation">
+            <span class="priority medium">3</span>
+            <div><strong>Schedule surface inspection</strong><p>Oak Street · Block 1200</p></div>
+            <button aria-label="Open recommendation">›</button>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <div class="analysis-modal" id="analysis-modal" aria-hidden="true">
+    <div class="analysis-backdrop" data-close-modal></div>
+    <section class="analysis-dialog" role="dialog" aria-modal="true" aria-labelledby="analysis-title">
+      <div class="dialog-header">
+        <div>
+          <p class="eyebrow">ROAD RISK PREDICTOR</p>
+          <h2 id="analysis-title">Run New Analysis</h2>
+        </div>
+        <button class="dialog-close" type="button" data-close-modal aria-label="Close">×</button>
+      </div>
+      <form id="analysis-form">
+        <div class="form-grid">
+          <label>Weather<select name="weather" required>
+            <option>Clear</option><option>Rain</option><option>Fog</option><option>Cloudy</option>
+          </select></label>
+          <label>Road type<select name="road" required>
+            <option>Highway</option><option>Urban</option><option>Rural</option><option>Intersection</option>
+          </select></label>
+          <label>Traffic density<select name="traffic" required>
+            <option>Low</option><option>Medium</option><option>High</option>
+          </select></label>
+          <label>Time of day<select name="time" required>
+            <option>Morning</option><option>Afternoon</option><option>Evening</option><option>Night</option>
+          </select></label>
+          <label>Road condition<select name="condition" required>
+            <option>Good</option><option>Wet</option><option>Damaged</option>
+          </select></label>
+          <label>Speed limit (km/h)<input name="speed" type="number" min="0" max="200" value="50" required></label>
+          <label>Visibility (km)<input name="visibility" type="number" min="0" max="50" step="0.1" value="10" required></label>
+        </div>
+        <div class="prediction-result" id="prediction-result" hidden></div>
+        <div class="dialog-actions">
+          <button class="secondary-button" type="button" data-close-modal>Cancel</button>
+          <button class="primary-button" type="submit">Analyze Risk</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status">Analysis started successfully</div>
+  <script src="script.js"></script>
+</body>
+</html>
